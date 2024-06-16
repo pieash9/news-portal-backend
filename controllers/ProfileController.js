@@ -12,7 +12,16 @@ class ProfileController {
 
   static async show(req, res) {}
 
-  static async update(req, res) {}
+  static async update(req, res) {
+    const { id } = req.params;
+    const authUser = req.user;
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res
+        .status(400)
+        .json({ status: 400, message: "Profile image is required." });
+    }
+  }
 
   static async destroy(req, res) {}
 }

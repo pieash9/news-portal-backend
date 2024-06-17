@@ -10,5 +10,6 @@ rootRoutes.post("/auth/login", AuthController.login);
 
 // profile routes
 rootRoutes.get("/profile", authMiddleware, ProfileController.index);
+rootRoutes.put("/profile", authMiddleware, ProfileController.update);
 
 export default rootRoutes;

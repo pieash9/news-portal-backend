@@ -6,8 +6,10 @@ import NewsController from "../controllers/NewsController.js";
 
 const rootRoutes = Router();
 
+// auth routes
 rootRoutes.post("/auth/register", AuthController.register);
 rootRoutes.post("/auth/login", AuthController.login);
+rootRoutes.get("/send-email", AuthController.sendTestEmail);
 
 // profile routes
 rootRoutes.get("/profile", authMiddleware, ProfileController.index);

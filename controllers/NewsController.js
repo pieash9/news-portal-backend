@@ -8,6 +8,7 @@ import {
 } from "../utils/helper.js";
 import prisma from "../DB/db.config.js";
 import NewsApiTransform from "../transform/newsApiTransform.js";
+import logger from "../config/logger.js";
 
 class NewsController {
   static async index(req, res) {
@@ -216,7 +217,7 @@ class NewsController {
 
       return res.status(200).json({ message: "News deleted" });
     } catch (error) {
-      console.log({ error });
+      logger.error(error.message);
       if (error instanceof errors.E_VALIDATION_ERROR) {
         return res.status(400).json({ errors: error.messages });
       } else {
